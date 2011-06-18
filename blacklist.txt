@@ -1,0 +1,30 @@
+# General stuff
+host ivwbox.de
+host doubleclick.net
+host googlesyndication.com
+host google-analytics.com
+host googleadservices.com
+host sitestat.com
+host facebook.com
+host fbcdn.net
+host addthis.com
+host inqnet.at
+host specificclick.net
+host scorecardresearch.com
+host intellitxt.com
+host platform.twitter.com
+host plista.com
+host api.flattr.com
+host uimserv.net
+
+# Heise
+raw rl.heise.de/images/pic.gif
+raw www.heise.de/ivw-bin/
+#ist nicht böse, aber lädt unnötige Bilder
+raw www.heise.de/support/lib/social_bookmarks.js
+
+# Gulli
+raw static.gulli.com/layout/partner/camao/cads-min.js
+
+# Google
+raw google.de/csi?
