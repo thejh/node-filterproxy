@@ -14,7 +14,7 @@ exports.InsertingStream = class InsertingStream extends EventEmitter
     @appendBuffer = new Buffer appendString
     # This is the next expected character.
     # Position 0 means: Expect the first character.
-    @searchPosition = 0
+    @searchPositions = []
     if callback?
       @on 'data', callback
   
@@ -23,15 +23,20 @@ exports.InsertingStream = class InsertingStream extends EventEmitter
     #console.log "chunktype: #{chunk.constructor.name}"
     while i < chunk.length
       byte = chunk[i]
-      expectedByte = @searchBuffer[@searchPosition]
-      if byte is expectedByte
-        @searchPosition++
-        if @searchPosition is @searchBuffer.length
-          @searchPosition = 0
-          chunk = bufInsert chunk, i+1, @appendBuffer
-          console.error '  inserting...'
-      else
-        @searchPosition = 0
+      # can't write this as a comprehension because of a CS bug
+      # (see https://github.com/jashkenas/coffee-script/issues/1222)
+      oldSearchPositions = @searchPositions
+      @searchPositions = []
+      for searchPosition in oldSearchPositions.concat 0
+        expectedByte = @searchBuffer[searchPosition]
+        if byte is expectedByte
+          searchPosition++
+          if searchPosition is @searchBuffer.length
+            chunk = bufInsert chunk, i+1, @appendBuffer
+            console.error '  inserting...'
+            continue
+          @searchPositions.push searchPosition
+        continue
       i++
     @_write chunk
   
