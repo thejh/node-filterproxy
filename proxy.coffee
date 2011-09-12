@@ -7,6 +7,7 @@ http = require 'http'
 {InsertingStream} = require './streaminsert'
 
 console.error = ->
+logging = false
 
 # Script injections (scripts to insert into server->client data)
 injections = []
@@ -22,15 +23,18 @@ denyRequest = (response, reason, code = 403) ->
 server_cb = (request, response) ->
   [host] = request.headers.host.split ':'
   delete request.headers['accept-encoding']
+  delete request.headers['proxy-connection']
   request.headers['accept-charset'] = 'utf-8'
   if 0 is request.url.indexOf 'http://'
     [_, host, request.url] = proxyUrlRegex.exec request.url
     request.url = '/' + request.url
   fullurl = "#{host}#{request.url}"
+  showurl = fullurl.slice(0, 100)
   
   {block, blockReason} = checkURL fullurl
   if block
     console.error "blocked request for '#{fullurl}', reason: #{blockReason}"
+    console.log "✗ #{showurl}" if logging
     return denyRequest response, blockReason
   
   proxy_request = http.request
@@ -58,6 +62,7 @@ server_cb = (request, response) ->
     response.writeHead proxy_response.statusCode, proxy_response.headers
   request.addListener 'data', (chunk) -> proxy_request.write chunk
   request.addListener 'end', -> proxy_request.end()
+  console.log "✓ #{showurl}" if logging
 
 # Activate it.
 http.createServer(server_cb).listen 8421
