@@ -7,6 +7,7 @@ host googleadservices.com
 host sitestat.com
 host facebook.com
 host fbcdn.net
+host connect.facebook.net
 host addthis.com
 host inqnet.at
 host specificclick.net
@@ -16,6 +17,35 @@ host platform.twitter.com
 host plista.com
 host api.flattr.com
 host uimserv.net
+host nuggad.net
+host chartbeat.com
+host atdmt.com
+host quality-channel.de
+host ligatus.com
+host adition.com
+host admeta.vo.llnwd.net
+host met.vgwort.de
+host api.loved.by
+host serverkompetenz.net
+host csi.gstatic.com
+host eads.to
+host ipcounter.de
+host sharethis.com
+host quantserve.com
+host adsonar.com
+host cleanprint.net
+host plusone.google.com
+host s.youtube.com
+host billabong3.wetter.com
+host mediaplex.com
+host adserver.71i.de
+host opticlick-ads1.de
+host opticlick-ads2.de
+host wunderloop.net
+
+# counter für fr-online.de
+host ac.fr-online.de
+raw www.fr-online.de/analytics/
 
 # Heise
 raw rl.heise.de/images/pic.gif
@@ -28,3 +58,21 @@ raw static.gulli.com/layout/partner/camao/cads-min.js
 
 # Google
 raw google.de/csi?
+raw apis.google.com/js/plusone.js
+
+# Wetter.com
+host billamedia.wetter.com
+
+# Spiegel.de
+raw www.spiegel.de/static/sys/pixel.gif
+raw www.spiegel.de/layout/js/http/netmind-V3-3.js
+
+# golem.de
+raw www.golem.de/_js/rl_art_afc1.js
+raw www.golem.de/staticrl/scripts/golem_low_28-min.js
+
+# english.yonhapnews.co.kr
+raw img.yonhapnews.co.kr/basic/banner/
+
+# twitter
+raw .twitter.com/widgets/tweet_button.html
