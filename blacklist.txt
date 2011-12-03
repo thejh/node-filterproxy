@@ -42,6 +42,33 @@ host adserver.71i.de
 host opticlick-ads1.de
 host opticlick-ads2.de
 host wunderloop.net
+host .sys.lv
+host .truste.com
+host .invitemedia.com
+host .questionmarket.com
+host .dl-rms.com
+host .bluekai.com
+host ads.forbes.com
+host .collective-media.net
+host .bizo.com
+host .yieldmanager.com
+host .cmmeglobal.com
+host .zemanta.com
+host .mookie1.com
+host platform.linkedin.com
+host .legolas-media.com
+host .revsci.net
+host .tynt.com
+host storify.com
+host admeld.com
+host rubiconproject.com
+host 2mdn.net
+host .adtech.de
+host ad2games.com
+host smartredirect.de
+host .getclicky.com
+host .technoratimedia.com
+host .netshelter.net
 
 # counter für fr-online.de
 host ac.fr-online.de
@@ -76,3 +103,6 @@ raw img.yonhapnews.co.kr/basic/banner/
 
 # twitter
 raw .twitter.com/widgets/tweet_button.html
+
+# Tracking: Piwik
+raw /piwik.js

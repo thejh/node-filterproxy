@@ -1,9 +1,9 @@
 {
   urlregex: /./
   search: '''
-.src = 'https://apis.google.com/js/plusone.js
+<SCRIPT src="http://hits.europuls.eu/
           '''
   append: '''
-'&&''; return '
+%00
           '''
 }
