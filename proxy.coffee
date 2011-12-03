@@ -74,7 +74,11 @@ fs.readdir 'injections', (err, files) ->
   async.forEachSeries files, (file, fileLoaded) ->
     fs.readFile 'injections/' + file, 'utf8', (err, data) ->
       throw err if err
-      fileContent = coffee.eval data
+      try
+        fileContent = coffee.eval data
+      catch evalE
+        console.error "broken: "+file
+        return
       if not fileContent?
         throw "gnarf"
       injections.push fileContent
