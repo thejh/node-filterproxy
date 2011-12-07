@@ -28,6 +28,7 @@ exports.checkURL = (url) ->
 
 parseBlacklist = (text) ->
   blacklist = for line in text.split '\n'
+    line = line.trim()
     continue if 0 is line.indexOf '#'
     continue if line.length is 0
     if entry = split2 line, ' '
