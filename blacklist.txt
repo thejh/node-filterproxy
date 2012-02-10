@@ -69,6 +69,20 @@ host smartredirect.de
 host .getclicky.com
 host .technoratimedia.com
 host .netshelter.net
+host stats.wordpress.com
+host .smartadserver.com
+host .emediate.eu
+host .webtrekk.net
+host .kontera.com
+host .tribalfusion.com
+host .interclick.com
+host .adbrite.com
+host .adnxs.net
+host .serving-sys.com
+host .crwdcntrl.net
+host .wikia-beacon.com
+host .meebo.com
+host .adverserve.net
 
 # counter für fr-online.de
 host ac.fr-online.de
