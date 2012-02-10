@@ -8,7 +8,7 @@ http = require 'http'
 {InsertingStream} = require './streaminsert'
 
 console.error = ->
-logging = false
+logging = JSON.parse process.argv[2]
 
 # Script injections (scripts to insert into server->client data)
 injections = []
