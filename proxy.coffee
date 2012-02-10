@@ -80,7 +80,7 @@ server_cb = (request, response) ->
   console.log "✓ #{showurl}" if logging
 
 # Activate it.
-http.createServer(server_cb).listen 8421
+http.createServer(server_cb).listen 8421, '127.0.0.1'
 
 # Load the injection commands.
 fs.readdir 'injections', (err, files) ->
