@@ -22,14 +22,17 @@ denyRequest = (response, reason, code = 403) ->
 
 # Prepare the proxy.
 server_cb = (request, response) ->
-  [host] = request.headers.host.split ':'
+  host = request.headers.host
   delete request.headers['accept-encoding']
   delete request.headers['proxy-connection']
   request.headers['accept-charset'] = 'utf-8'
   if 0 is request.url.indexOf 'http://'
     [_, host, request.url] = proxyUrlRegex.exec request.url
     request.url = '/' + request.url
-  fullurl = "#{host}#{request.url}"
+  [host, port] = host.split ':'
+  port = +port
+  port = 80 if isNaN port
+  fullurl = "#{host}#{[":#{port}" if port isnt 80]}#{request.url}"
   showurl = fullurl.slice(0, 100)
   
   {block, blockReason} = checkURL fullurl
@@ -43,7 +46,7 @@ server_cb = (request, response) ->
     path: request.url
     headers: request.headers
     host: host
-    port: 80
+    port: port
   proxy_request.on 'error', (err) ->
     denyRequest response, err+'', 404
   proxy_request.addListener 'response', (proxy_response) ->
